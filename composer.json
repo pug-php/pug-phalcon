@@ -1,7 +1,10 @@
 {
-    "name": "kylekatarnls/jade-phalcon",
+    "name": "pug-php/pug-phalcon",
+    "replace": {
+        "kylekatarnls/jade-phalcon": "self.version"
+    },
     "description": "HAML-like template engine for phalcon",
-    "keywords": ["jade", "minification", "template", "phalcon"],
+    "keywords": ["pug", "jade", "minification", "template", "phalcon"],
     "homepage": "https://github.com/kylekatarnls/jade-phalcon",
     "type": "library",
     "license": "MIT",
@@ -14,9 +17,11 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "kylekatarnls/jade-php": ">=1.1.1"
+        "pug-php/pug": "^1.11"
     },
     "autoload": {
-        "psr-0": { "Phalcon": "src/" }
+        "psr-0": {
+            "Phalcon": "src/"
+        }
     }
 }
