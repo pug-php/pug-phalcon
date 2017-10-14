@@ -20,7 +20,8 @@ class Jade extends Engine implements EngineInterface
     {
         //Initialize here the adapter
         parent::__construct($view, $di);
-        $this->jade = new \Jade\Jade($options);
+        $className = class_exists('Jade\\Jade') ? 'Jade\\Jade' : 'Pug\\Pug';
+        $this->jade = new $className($options);
     }
 
     /**
@@ -31,7 +32,10 @@ class Jade extends Engine implements EngineInterface
      */
     public function render($path, $params, $mustClean = false)
     {
-        $content = $this->jade->render($path, $params);
+        $method = method_exists($this->jade, 'renderFile')
+            ? array($this->jade, 'renderFile')
+            : array($this->jade, 'render');
+        $content = call_user_func($method, $path, $params);
         if($mustClean) {
             $this->_view->setContent($content);
         } else {
