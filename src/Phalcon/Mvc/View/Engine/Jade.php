@@ -20,7 +20,7 @@ class Jade extends Engine implements EngineInterface
     {
         //Initialize here the adapter
         parent::__construct($view, $di);
-        $className = class_exists('Jade\\Jade') ? 'Jade\\Jade' : 'Pug\\Pug';
+        $className = class_exists('Pug\\Pug') ? 'Pug\\Pug' : 'Jade\\Jade';
         $this->jade = new $className($options);
     }
 
